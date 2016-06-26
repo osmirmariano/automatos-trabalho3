@@ -15,7 +15,7 @@ class Expressao{
 
 
     	int quantidade, quant;
-    	string estado[10], estadoInicial, estadoFinal[10], estadoDefinido, simbolo;
+    	string estado[10], estadoInicial, estadoFinal[10], estadoDefinido[10], simbolo;
     	int pertence;
     public:
 
@@ -24,7 +24,6 @@ class Expressao{
         	this->quant = quant;
             this->alfabetoTratado = alfabetoTratado;
             this->alfabeto = alfabeto;
-            this->estadoDefinido = estadoDefinido;
             this->palavra = palavra;
         	this->recebe = recebe;
         	this->tamanho = 0;
@@ -223,7 +222,8 @@ class Expressao{
 
         //FUNÇÃO PARA DEFINIR A TRANSIÇÃO DO AUTOMATO
         void definindoTransicao(string palavra, string alfabeto){
-            
+            int contador = 0;
+            //string armazena[10];
             int tamanho = alfabetoTratado.length();
 
             cout << "---------------------------------------------" << endl;
@@ -232,9 +232,15 @@ class Expressao{
             for(int x = 0; x < quantidade; x++){
                 for(int y = 0; y < tamanho; y++){
                     cout << " NO ESTADO <" << estado[x] << "> ENTRA <" << alfabetoTratado[y] << "> VAI PARA: ";
-                    cin >> estadoDefinido;
+                    //cin >> estadoDefinido[y];
+                    //armazena[x] = estadoDefinido[x];
+                    //cout << "NOVOESTADO: " << armazena[x] << endl;
+                    contador++;
+                    for(int i = 0; i < contador; i++){
+                       cin >> estadoDefinido[y]; 
+                    }
                 }
-                    
+                //cout << "  " << estadoDefinido[x] << endl; 
                 /*cout << "QUAIS SIMBOLOS ENTRA NO ESTADO " << estado[x] << ": ";
                 cin >> simbolo[x];*/
                 /*for(int y = 0; y < tamanho; y++){
@@ -248,10 +254,9 @@ class Expressao{
                 cout << endl << " EXISTEM SIMBOLOS QUE NÃO PERTECE A PALAVRA" << endl;
                 conta = 0;
             }*/
-            
-
-            for(int x = 0; x < quantidade; x++){
-                cout << "  " << estadoDefinido[x];
+            cout << "CONTADOR: " << contador << endl;
+            for(int x = 0; x < contador; x++){
+                cout << "  " << estadoDefinido[x] << endl;
             }
 
         }
