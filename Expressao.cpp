@@ -103,10 +103,10 @@ class Expressao{
                             if(estadoFinal[x] == estado[y]){
                                 verificar++;
                             }
-                        }                  
+                        }
                     }
                     if(verificar < quant){
-                        cout << endl << "\t ALGUNS DOS ESTADOS NÃO EXISTEM NO AUTOMATO" << endl;  
+                        cout << endl << "\t ALGUNS DOS ESTADOS NÃO EXISTEM NO AUTOMATO" << endl;
                     }
                 }
                 cout << "---------------------------------------------" << endl;
@@ -134,13 +134,13 @@ class Expressao{
             int tam =  alfabetoTratado.length();
             cout << endl;
             for (int x = 0; x < tam; x++){
-                cout << "       |      " << alfabetoTratado[x]; 
-                
+                cout << "       |      " << alfabetoTratado[x];
+
             }
             cout << endl;
             cout << "----------------------------------------" <<endl;
             for(int x = 0; x < quantidade; x++){
-                cout << "  " << estado[x] << "   |  " << endl;  
+                cout << "  " << estado[x] << "   |  " << endl;
                 cout << "----------------------------------------" <<endl;
             }
         };
@@ -178,7 +178,7 @@ class Expressao{
 
         void mostrarAutomato(){
             cout << " TESTE" << endl;
-        }*/       
+        }*/
 
         //FUNÇÃO PARA PEGAR O ÚLTIMO SÍMBOLO --> STATUS OK
         void ultimoSimbolo(string palavra){
@@ -222,6 +222,7 @@ class Expressao{
 
         //FUNÇÃO PARA DEFINIR A TRANSIÇÃO DO AUTOMATO
         void definindoTransicao(string palavra, string alfabeto){
+<<<<<<< HEAD
             int contador = 0;
             //string armazena[10];
             int tamanho = alfabetoTratado.length();
@@ -238,6 +239,20 @@ class Expressao{
                     contador++;
                     for(int i = 0; i < contador; i++){
                        cin >> estadoDefinido[y]; 
+=======
+            int conta = 0;
+            string str1, str2;
+            while(conta == 0){
+                cout << "---------------------------------------------" << endl;
+                cout << "\tDEFININDO AS TRANSIÇÕES DO AUTOMATO" << endl;
+                cout << "---------------------------------------------" << endl;
+                for(int x = 0; x < quantidade; x++){
+                    str1 = simbolo[x]; str2 = palavra[x];
+                    cout << "QUAIS SIMBOLOS ENTRA NO ESTADO " << estado[x] << ": ";
+                    cin >> simbolo[x];
+                    if(str1 == str2){ //(strcmp(str1,str2)==0) //(str1.compare(str2) == 0)
+                        conta++;
+>>>>>>> 38a4f2fefe2b6a62b40801d6b73a39e661073f3b
                     }
                 }
                 //cout << "  " << estadoDefinido[x] << endl; 
@@ -361,7 +376,7 @@ class Expressao{
                                                         estado = "q0";
                                                     }
                                                 }
-                                            } 
+                                            }
                                         }
                                     }
                                 }
@@ -370,7 +385,7 @@ class Expressao{
                     }
                 }
             }
-            
+
             if(recebe1 > recebe2){
                 cout << " PALAVRA PERTENCE AO ALFABETO" << endl;
                 cout << endl << " ESTADO RETORNADO: " << estado << endl;
@@ -388,5 +403,5 @@ class Expressao{
                 }
             }
         };
-        
+
 };
