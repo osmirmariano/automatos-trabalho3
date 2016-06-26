@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <vector>
 #include <iostream>
-#include "Alfabeto.cpp"
 
 using namespace std;
 
@@ -16,7 +15,7 @@ class Expressao{
 
 
     	int quantidade, quant;
-    	string estado[10], estadoInicial, estadoFinal[10], estd, simb, simbolo[10];
+    	string estado[10], estadoInicial, estadoFinal[10], estd, simbolo;
     	int pertence;
     public:
 
@@ -100,7 +99,7 @@ class Expressao{
                     for (int x = 0; x < quant; x++){
                         cout << " " <<  x+1 << "º  ESTADO FINAL: ";
                         cin >> estadoFinal[x];
-                        for(int y = x; y < quantidade; y++){
+                        for(int y = 0; y < quantidade; y++){
                             if(estadoFinal[x] == estado[y]){
                                 verificar++;
                             }
@@ -112,7 +111,7 @@ class Expressao{
                 }
                 cout << "---------------------------------------------" << endl;
             }
-            definindoTransicao(alfabeto, palavra);
+            
             //MOSTRANDO OS DADOS INSERIDOS PARA VERIFICAR SE ESTÁ CERTO
             cout << "---------------------------------------------" << endl << endl;
             cout << " --> ALFABETO: " << alfabeto << endl;
@@ -126,6 +125,7 @@ class Expressao{
                 cout << " " << estadoFinal[x];
             }
             cout << endl << " --> ALFABETO TRATADO: " << unirAlfabeto(alfabeto) << endl;
+            definindoTransicao(alfabeto, palavra);
         };
 
         //FUNÇÃO PARA MOSTRAR O AUTOMATO --> STATUS EM ANDAMENTO
@@ -154,9 +154,9 @@ class Expressao{
         }*/
 
         /*
-        int retornaColuna(string simbolo){
+        int retornaColuna(string simbolo, string palavra){
             for(int x = 0; x < quantidade; x++){
-                if(strcmp(simb == simbolo[x]) == 0)
+                if(strcmp(simbolo[x] == palavra[x]) == 0)
                     return x;
             }
             return -1;
@@ -182,16 +182,16 @@ class Expressao{
 
         //FUNÇÃO PARA PEGAR O ÚLTIMO SÍMBOLO --> STATUS OK
         void ultimoSimbolo(string palavra){
-            string diviPalava;
+            string diviPalavra;
             int tam = palavra.length();
             for(int x = tam-1; x >= 0; x--){
                 cont++;
                 for(int y = 0; y < tam-cont; y++){
-                    diviPalava += palavra[y];
+                    diviPalavra += palavra[y];
                 }
-                cout << " PALAVRA: " << diviPalava << " | ÚLTIMO SÍMBOLO: " << palavra[x] << endl;
+                cout << " PALAVRA: " << diviPalavra << " | ÚLTIMO SÍMBOLO: " << palavra[x] << endl;
                 cout << "---------------------------------------------" << endl;
-                diviPalava = "";
+                diviPalavra = "";
             }
             cout << endl;
         };
@@ -223,22 +223,27 @@ class Expressao{
         //FUNÇÃO PARA DEFINIR A TRANSIÇÃO DO AUTOMATO
         void definindoTransicao(string palavra, string alfabeto){
             int conta = 0;
+            int tamanho = alfabetoTratado.length();
+
+            cout << "----------------------------------------" << endl;
             while(conta == 0){
                 cout << "---------------------------------------------" << endl;
                 cout << "\tDEFININDO AS TRANSIÇÕES DO AUTOMATO" << endl;
                 cout << "---------------------------------------------" << endl;
                 for(int x = 0; x < quantidade; x++){
                     cout << "QUAIS SIMBOLOS ENTRA NO ESTADO " << estado[x] << ": ";
-                    cin >> simbolo[x];
-                    if(strcmp(simbolo[x] == palavra[x]) == 0){
-                        conta++;
+                    cin >> simbolo[x]; 
+                    cout << "SIMBOLO: " << simbolo[x] << " PALAVRA: " << alfabetoTratado[x] << endl;                   
+                    for(int y = 0; y < tamanho; y++){
+                        if(simbolo[x] == alfabetoTratado[y]){
+                            conta++;
+                            break;
+                        }
                     }
                 }
-                if(conta == 0){
-                    cout << " EXISTEM SIMBOLOS QUE NÃO PERTECE A PALAVRA" << endl;
-                   /* for(int x = 0; x < quantidade; x++){
-                        simbolo[x].clear();
-                    }*/
+                if(conta < quantidade){
+                    cout << endl << " EXISTEM SIMBOLOS QUE NÃO PERTECE A PALAVRA" << endl;
+                    conta = 0;
                 }
             }
 
