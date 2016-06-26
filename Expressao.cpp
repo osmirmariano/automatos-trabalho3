@@ -10,26 +10,26 @@ using namespace std;
 
 class Expressao{
     public:
-    	int recebe, tamanho, verifica, aceito, cont, result, a;
-	    string alfabetoTratado, alfabeto, palavra;
+        int recebe, tamanho, verifica, aceito, cont, result, a;
+        string alfabetoTratado, alfabeto, palavra;
 
 
-    	int quantidade, quant;
-    	string estado[10], estadoInicial, estadoFinal[10], estadoDefinido[10], simbolo;
-    	int pertence;
+        int quantidade, quant;
+        string estado[10], estadoInicial, estadoFinal[10], estadoDefinido[10], simbolo;
+        int pertence;
     public:
 
         Expressao(){
-        	this->quantidade = quantidade;
-        	this->quant = quant;
+            this->quantidade = quantidade;
+            this->quant = quant;
             this->alfabetoTratado = alfabetoTratado;
             this->alfabeto = alfabeto;
             this->palavra = palavra;
-        	this->recebe = recebe;
-        	this->tamanho = 0;
-        	this->aceito = 0;
-        	this->cont = 0;
-        	this->result = 0;
+            this->recebe = recebe;
+            this->tamanho = 0;
+            this->aceito = 0;
+            this->cont = 0;
+            this->result = 0;
         };
 
         ~Expressao();
@@ -50,11 +50,11 @@ class Expressao{
         void definindoAutomato(){
             //INFORMAÇÕES DE INSERÇÃO DOS DADOS
             cout << "Por favor, insira alfabeto neste modelo {0,1}" << endl;
-        	cout << "---------------------------------------------" << endl;
+            cout << "---------------------------------------------" << endl;
             cout << " INFORME O ALFABETO: ";
             cin >> alfabeto;
-        	cout << "---------------------------------------------" << endl;
-        	cout << " INFORME A QUANTIDADE DE ESTADOS: ";
+            cout << "---------------------------------------------" << endl;
+            cout << " INFORME A QUANTIDADE DE ESTADOS: ";
             cin >> quantidade;
             cout << "---------------------------------------------" << endl;
             cout << " QUANTIDADE DE ESTADOS FINAIS: ";
@@ -64,19 +64,19 @@ class Expressao{
                 cout << " NÃO EXISTE ESTA QUANTIDADE DE ESTADOS NO AUTOMATOS" << endl;
             }
             else{
-	            cout << "\t FORNECA OS ESTADOS" << endl;
-	            cout << "---------------------------------------------" << endl;
-	            for(int x = 0; x < quantidade; x++){
-	             	cout << " INFORME O " << x+1 << "º ESTADO: ";
-	                cin >> estado[x];
-	            }
+                cout << "\t FORNECA OS ESTADOS" << endl;
+                cout << "---------------------------------------------" << endl;
+                for(int x = 0; x < quantidade; x++){
+                    cout << " INFORME O " << x+1 << "º ESTADO: ";
+                    cin >> estado[x];
+                }
 
                 //INSERÇÃO E TRATAMENTO DO ESTADO INCIAL
                 int ver = 0;
                 while(ver == 0){
-    	            cout << "---------------------------------------------" << endl;
-    	            cout << " INFORME O ESTADO INICIAL: ";
-    	            cin >> estadoInicial;
+                    cout << "---------------------------------------------" << endl;
+                    cout << " INFORME O ESTADO INICIAL: ";
+                    cin >> estadoInicial;
                     for(int x = 0; x < quantidade; x++){
                         if(estadoInicial == estado[x]){
                             ver = 1;
@@ -89,13 +89,13 @@ class Expressao{
                         cout << endl << "\tNÃO EXISTE ESTE ESTADO NO AUTOMATO" << endl;
                     }
                 }
-	            cout << endl;
+                cout << endl;
                 //INSERÇÃO E TRATAMENTO DOS ESTADOS FINAIS
                 int verificar = 0;
                 while(verificar < quant){
-    	            cout << "---------------------------------------------" << endl;
-    	            cout << "\t FORNECA OS ESTADOS FINAIS" << endl;
-    	            cout << "---------------------------------------------" << endl;
+                    cout << "---------------------------------------------" << endl;
+                    cout << "\t FORNECA OS ESTADOS FINAIS" << endl;
+                    cout << "---------------------------------------------" << endl;
                     for (int x = 0; x < quant; x++){
                         cout << " " <<  x+1 << "º  ESTADO FINAL: ";
                         cin >> estadoFinal[x];
@@ -103,10 +103,10 @@ class Expressao{
                             if(estadoFinal[x] == estado[y]){
                                 verificar++;
                             }
-                        }
+                        }                  
                     }
                     if(verificar < quant){
-                        cout << endl << "\t ALGUNS DOS ESTADOS NÃO EXISTEM NO AUTOMATO" << endl;
+                        cout << endl << "\t ALGUNS DOS ESTADOS NÃO EXISTEM NO AUTOMATO" << endl;  
                     }
                 }
                 cout << "---------------------------------------------" << endl;
@@ -134,13 +134,13 @@ class Expressao{
             int tam =  alfabetoTratado.length();
             cout << endl;
             for (int x = 0; x < tam; x++){
-                cout << "       |      " << alfabetoTratado[x];
-
+                cout << "       |      " << alfabetoTratado[x]; 
+                
             }
             cout << endl;
             cout << "----------------------------------------" <<endl;
             for(int x = 0; x < quantidade; x++){
-                cout << "  " << estado[x] << "   |  " << endl;
+                cout << "  " << estado[x] << "   |  " << endl;  
                 cout << "----------------------------------------" <<endl;
             }
         };
@@ -178,7 +178,7 @@ class Expressao{
 
         void mostrarAutomato(){
             cout << " TESTE" << endl;
-        }*/
+        }*/       
 
         //FUNÇÃO PARA PEGAR O ÚLTIMO SÍMBOLO --> STATUS OK
         void ultimoSimbolo(string palavra){
@@ -222,7 +222,6 @@ class Expressao{
 
         //FUNÇÃO PARA DEFINIR A TRANSIÇÃO DO AUTOMATO
         void definindoTransicao(string palavra, string alfabeto){
-<<<<<<< HEAD
             int contador = 0;
             //string armazena[10];
             int tamanho = alfabetoTratado.length();
@@ -233,27 +232,10 @@ class Expressao{
             for(int x = 0; x < quantidade; x++){
                 for(int y = 0; y < tamanho; y++){
                     cout << " NO ESTADO <" << estado[x] << "> ENTRA <" << alfabetoTratado[y] << "> VAI PARA: ";
-                    //cin >> estadoDefinido[y];
+                    cin >> estadoDefinido[];
                     //armazena[x] = estadoDefinido[x];
                     //cout << "NOVOESTADO: " << armazena[x] << endl;
                     contador++;
-                    for(int i = 0; i < contador; i++){
-                       cin >> estadoDefinido[y]; 
-=======
-            int conta = 0;
-            string str1, str2;
-            while(conta == 0){
-                cout << "---------------------------------------------" << endl;
-                cout << "\tDEFININDO AS TRANSIÇÕES DO AUTOMATO" << endl;
-                cout << "---------------------------------------------" << endl;
-                for(int x = 0; x < quantidade; x++){
-                    str1 = simbolo[x]; str2 = palavra[x];
-                    cout << "QUAIS SIMBOLOS ENTRA NO ESTADO " << estado[x] << ": ";
-                    cin >> simbolo[x];
-                    if(str1 == str2){ //(strcmp(str1,str2)==0) //(str1.compare(str2) == 0)
-                        conta++;
->>>>>>> 38a4f2fefe2b6a62b40801d6b73a39e661073f3b
-                    }
                 }
                 //cout << "  " << estadoDefinido[x] << endl; 
                 /*cout << "QUAIS SIMBOLOS ENTRA NO ESTADO " << estado[x] << ": ";
@@ -376,7 +358,7 @@ class Expressao{
                                                         estado = "q0";
                                                     }
                                                 }
-                                            }
+                                            } 
                                         }
                                     }
                                 }
@@ -385,7 +367,7 @@ class Expressao{
                     }
                 }
             }
-
+            
             if(recebe1 > recebe2){
                 cout << " PALAVRA PERTENCE AO ALFABETO" << endl;
                 cout << endl << " ESTADO RETORNADO: " << estado << endl;
@@ -403,5 +385,5 @@ class Expressao{
                 }
             }
         };
-
+        
 };
