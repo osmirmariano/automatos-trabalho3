@@ -12,7 +12,7 @@ using namespace std;
 class Expressao{
     public:
     	int recebe, tamanho, verifica, aceito, cont, result, a;
-	    string alfabetoTratado, alfabeto;
+	    string alfabetoTratado, alfabeto, palavra;
 
 
     	int quantidade, quant;
@@ -25,6 +25,7 @@ class Expressao{
         	this->quant = quant;
             this->alfabetoTratado = alfabetoTratado;
             this->alfabeto = alfabeto;
+            this->palavra = palavra;
         	this->recebe = recebe;
         	this->tamanho = 0;
         	this->aceito = 0;
@@ -111,7 +112,7 @@ class Expressao{
                 }
                 cout << "---------------------------------------------" << endl;
             }
-
+            definindoTransicao(alfabeto, palavra);
             //MOSTRANDO OS DADOS INSERIDOS PARA VERIFICAR SE ESTÁ CERTO
             cout << "---------------------------------------------" << endl << endl;
             cout << " --> ALFABETO: " << alfabeto << endl;
@@ -210,28 +211,56 @@ class Expressao{
                         }
                     }
                 }
-                if(pertence == tam){
-                    cout << "\tA PALAVRA '" << palavra << "' PERTENCE AO ALFABETO " << endl;
+                if(pertence == tam2){
+                    cout << "   A PALAVRA '" << palavra << "' PERTENCE AO ALFABETO " << endl;
                 }
                 else{
-                    cout << "\tA PALAVRA '" << palavra << "' NÃO PERTENCE AO ALFABETO " << endl;
+                    cout << "   A PALAVRA '" << palavra << "' NÃO PERTENCE AO ALFABETO " << endl;
                 }
             }
         }
 
+        //FUNÇÃO PARA DEFINIR A TRANSIÇÃO DO AUTOMATO
+        void definindoTransicao(string palavra, string alfabeto){
+            int conta = 0;
+            while(conta == 0){
+                cout << "---------------------------------------------" << endl;
+                cout << "\tDEFININDO AS TRANSIÇÕES DO AUTOMATO" << endl;
+                cout << "---------------------------------------------" << endl;
+                for(int x = 0; x < quantidade; x++){
+                    cout << "QUAIS SIMBOLOS ENTRA NO ESTADO " << estado[x] << ": ";
+                    cin >> simbolo[x];
+                    if(strcmp(simbolo[x] == palavra[x]) == 0){
+                        conta++;
+                    }
+                }
+                if(conta == 0){
+                    cout << " EXISTEM SIMBOLOS QUE NÃO PERTECE A PALAVRA" << endl;
+                   /* for(int x = 0; x < quantidade; x++){
+                        simbolo[x].clear();
+                    }*/
+                }
+            }
 
+            for(int x = 0; x < quantidade; x++){
+                cout << "  " << simbolo[x] << endl;
+            }
+
+        }
 
         //FUNÇÃO PARA CALCULAR A FUNÇÃO DE TRANSIÇÃO ESTENDIDA --> STATUS EM ANDAMENTO
         void funcaoTransicaoEstendida(string palavra){
             verificaPertenceAlfa(alfabeto, palavra);
             cout << "---------------------------------------------" << endl;
+            definindoTransicao(palavra, alfabeto);
             int tam = 0, recebe1 = 0, recebe2 = 0;
-            //string q0, q1, q2, q3, q4, q5, q6, q7, estado="q0";
-            
+            string q0, q1, q2, q3, q4, q5, q6, q7, estado="q0";
+
             tam = palavra.length();
             ultimoSimbolo(palavra);
             for(int x = 0; x < tam; x++){
-                for(int y = x+1; y < tam; y++){
+                if(estado[x] == palavra[x])
+                /*for(int y = x+1; y < tam; y++){
                     if(alfabetoTratado[x] == palavra[y]){
                         recebe1++;
                         cout << "RECEBE 1: " << recebe1 << endl;
@@ -240,7 +269,7 @@ class Expressao{
                         recebe2++;
                         cout << "RECEBE 2: " << recebe2 << endl;
                     }
-                }
+                }*/
 
                 if(palavra[x] != 'a' && palavra[x] != 'b'){
                     pertence = 1;
