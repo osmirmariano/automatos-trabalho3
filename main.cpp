@@ -6,7 +6,7 @@ using namespace std;
 
 int main(){
     int opcao;
-    string estado;
+    string estado, palavra, alfabeto;
 
     Expressao *exp = new Expressao();
 
@@ -23,6 +23,7 @@ int main(){
         cin >> opcao;
         cout << "---------------------------------------------" << endl << endl;
 
+
         switch(opcao){
             case 1:
                 cout << endl << "---------------------------------------------" << endl;
@@ -35,8 +36,15 @@ int main(){
                 cout << endl << "---------------------------------------------" << endl;
                 cout << "\t VISUALIZAÇÃO DE AUTÔMATOS" << endl;
                 cout << "---------------------------------------------" << endl;
-                exp->mostrarAutomato();
+                exp->mostrarAutomato(alfabeto);
                 break;
+            case 3:
+                cout << endl << "---------------------------------------------" << endl;
+                cout << "\t FUNÇÃO DE TRANSICAO" << endl;
+                cout << "---------------------------------------------" << endl;
+                cout << " INFORME PALAVRA: ";
+                cin >> palavra;
+                exp->funcaoTransicaoEstendida(palavra);
             case 0:
                 cout << "PROGRAMA ENCERRADO COM SUCESSO!" << endl;
                 break;

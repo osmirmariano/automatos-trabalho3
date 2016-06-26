@@ -46,19 +46,6 @@ class Alfabeto{
 			    }
 			}
 		};
-
-		/*-----------------------------FUNÇÃO GUARDA ALFABETO------------------------------*/
-		string guardaAlfabeto(string alfabeto, int result){
-            alfabetos.push_back(alfabeto);
-            contando++;
-            for(int x = 0; x < result; x++){
-			    if(alfabeto[x] != '{' && alfabeto[x] != '}' && alfabeto[x] != ',' && alfabeto[x] != ' '){
-                    unirAlfa += alfabeto[x];
-			    }
-			}
-			return unirAlfa;
-        };
-
 		/*----------------------FUNÇÃO VERIFICA ALFABETO REPETIDOS-------------------------*/
 		void verifAlfabetoRepetido (string alfabeto, int result){ // verifica repetições de elementos no alfabeto
 			for(int x = 0; x < cont; x++){
@@ -76,7 +63,6 @@ class Alfabeto{
 				cout << endl << "\tALFABETO INFORMADO ACEITO - ";
 		        function(alfabeto, result);
 		        cout << endl;
-		        guardaAlfabeto(alfabeto, result);
 		    }
 			recebe = 0;
 			destrutor();
