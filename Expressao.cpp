@@ -232,7 +232,7 @@ class Expressao{
             for(int x = 0; x < quantidade; x++){
                 for(int y = 0; y < tamanho; y++){
                     cout << " NO ESTADO <" << estado[x] << "> ENTRA <" << alfabetoTratado[y] << "> VAI PARA: ";
-                    cin >> estadoDefinido[];
+                    cin >> estadoDefinido[contador];
                     //armazena[x] = estadoDefinido[x];
                     //cout << "NOVOESTADO: " << armazena[x] << endl;
                     contador++;
