@@ -220,43 +220,38 @@ class Expressao{
             }
         }
 
-        //FUNÇÃO PARA DEFINIR A TRANSIÇÃO DO AUTOMATO
+        //FUNÇÃO PARA DEFINIR A TRANSIÇÃO DO AUTOMATO --> STATUS OK
         void definindoTransicao(string palavra, string alfabeto){
-            int contador = 0;
-            //string armazena[10];
+            int contador = 0, conta = 0, a = 0;
             int tamanho = alfabetoTratado.length();
 
-            cout << "---------------------------------------------" << endl;
-            cout << "\tDEFININDO AS TRANSIÇÕES DO AUTOMATO" << endl;
-            cout << "---------------------------------------------" << endl;
-            for(int x = 0; x < quantidade; x++){
-                for(int y = 0; y < tamanho; y++){
-                    cout << " NO ESTADO <" << estado[x] << "> ENTRA <" << alfabetoTratado[y] << "> VAI PARA: ";
-                    cin >> estadoDefinido[contador];
-                    //armazena[x] = estadoDefinido[x];
-                    //cout << "NOVOESTADO: " << armazena[x] << endl;
-                    contador++;
+            while(conta == 0){
+                cout << "---------------------------------------------" << endl;
+                cout << "\tDEFININDO AS TRANSIÇÕES DO AUTOMATO" << endl;
+                cout << "---------------------------------------------" << endl;
+                for(int x = 0; x < quantidade; x++){
+                    for(int y = 0; y < tamanho; y++){
+                        cout << " NO ESTADO <" << estado[x] << "> ENTRA <" << alfabetoTratado[y] << "> VAI PARA: ";
+                        cin >> estadoDefinido[contador];
+                        contador++;
+                    }  
                 }
-                //cout << "  " << estadoDefinido[x] << endl; 
-                /*cout << "QUAIS SIMBOLOS ENTRA NO ESTADO " << estado[x] << ": ";
-                cin >> simbolo[x];*/
-                /*for(int y = 0; y < tamanho; y++){
-                    if(simbolo[x] == alfabetoTratado[y]){
-                        conta++;
-                        break;
-                    }
-                }*/
+                for(int x = 0; x < contador; x++){
+                    for(int y = 0; y < quantidade; y++){
+                        if(estadoDefinido[x] == estado[y]){
+                            conta++;
+                            break;
+                        }
+                    }  
+                }
+                if(conta < contador){
+                    cout << endl << " EXISTEM ESTADOS INFORMADOS QUE NÃO PERTECE AO AUTOMATO" << endl;
+                    cout << "---------------------------------------------" << endl;
+                    conta = 0;
+                    contador = 0;
+                }
             }
-            /*if(conta < quantidade){
-                cout << endl << " EXISTEM SIMBOLOS QUE NÃO PERTECE A PALAVRA" << endl;
-                conta = 0;
-            }*/
-            cout << "CONTADOR: " << contador << endl;
-            for(int x = 0; x < contador; x++){
-                cout << "  " << estadoDefinido[x] << endl;
-            }
-
-        }
+        };
 
         //FUNÇÃO PARA CALCULAR A FUNÇÃO DE TRANSIÇÃO ESTENDIDA --> STATUS EM ANDAMENTO
         void funcaoTransicaoEstendida(string palavra){
