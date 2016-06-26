@@ -15,7 +15,7 @@ class Expressao{
 
 
     	int quantidade, quant;
-    	string estado[10], estadoInicial, estadoFinal[10], estd, simbolo;
+    	string estado[10], estadoInicial, estadoFinal[10], estadoDefinido, simbolo;
     	int pertence;
     public:
 
@@ -24,6 +24,7 @@ class Expressao{
         	this->quant = quant;
             this->alfabetoTratado = alfabetoTratado;
             this->alfabeto = alfabeto;
+            this->estadoDefinido = estadoDefinido;
             this->palavra = palavra;
         	this->recebe = recebe;
         	this->tamanho = 0;
@@ -125,7 +126,7 @@ class Expressao{
                 cout << " " << estadoFinal[x];
             }
             cout << endl << " --> ALFABETO TRATADO: " << unirAlfabeto(alfabeto) << endl;
-            definindoTransicao(alfabeto, palavra);
+            //definindoTransicao(alfabeto, palavra);
         };
 
         //FUNÇÃO PARA MOSTRAR O AUTOMATO --> STATUS EM ANDAMENTO
@@ -222,33 +223,35 @@ class Expressao{
 
         //FUNÇÃO PARA DEFINIR A TRANSIÇÃO DO AUTOMATO
         void definindoTransicao(string palavra, string alfabeto){
-            int conta = 0;
+            
             int tamanho = alfabetoTratado.length();
 
-            cout << "----------------------------------------" << endl;
-            while(conta == 0){
-                cout << "---------------------------------------------" << endl;
-                cout << "\tDEFININDO AS TRANSIÇÕES DO AUTOMATO" << endl;
-                cout << "---------------------------------------------" << endl;
-                for(int x = 0; x < quantidade; x++){
-                    cout << "QUAIS SIMBOLOS ENTRA NO ESTADO " << estado[x] << ": ";
-                    cin >> simbolo[x]; 
-                    cout << "SIMBOLO: " << simbolo[x] << " PALAVRA: " << alfabetoTratado[x] << endl;                   
-                    for(int y = 0; y < tamanho; y++){
-                        if(simbolo[x] == alfabetoTratado[y]){
-                            conta++;
-                            break;
-                        }
+            cout << "---------------------------------------------" << endl;
+            cout << "\tDEFININDO AS TRANSIÇÕES DO AUTOMATO" << endl;
+            cout << "---------------------------------------------" << endl;
+            for(int x = 0; x < quantidade; x++){
+                for(int y = 0; y < tamanho; y++){
+                    cout << " NO ESTADO <" << estado[x] << "> ENTRA <" << alfabetoTratado[y] << "> VAI PARA: ";
+                    cin >> estadoDefinido;
+                }
+                    
+                /*cout << "QUAIS SIMBOLOS ENTRA NO ESTADO " << estado[x] << ": ";
+                cin >> simbolo[x];*/
+                /*for(int y = 0; y < tamanho; y++){
+                    if(simbolo[x] == alfabetoTratado[y]){
+                        conta++;
+                        break;
                     }
-                }
-                if(conta < quantidade){
-                    cout << endl << " EXISTEM SIMBOLOS QUE NÃO PERTECE A PALAVRA" << endl;
-                    conta = 0;
-                }
+                }*/
             }
+            /*if(conta < quantidade){
+                cout << endl << " EXISTEM SIMBOLOS QUE NÃO PERTECE A PALAVRA" << endl;
+                conta = 0;
+            }*/
+            
 
             for(int x = 0; x < quantidade; x++){
-                cout << "  " << simbolo[x] << endl;
+                cout << "  " << estadoDefinido[x];
             }
 
         }
@@ -258,6 +261,7 @@ class Expressao{
             verificaPertenceAlfa(alfabeto, palavra);
             cout << "---------------------------------------------" << endl;
             definindoTransicao(palavra, alfabeto);
+            
             int tam = 0, recebe1 = 0, recebe2 = 0;
             string q0, q1, q2, q3, q4, q5, q6, q7, estado="q0";
 
