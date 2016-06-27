@@ -36,7 +36,7 @@ int main(){
                 cout << endl << "---------------------------------------------" << endl;
                 cout << "\t VISUALIZAÇÃO DE AUTÔMATOS" << endl;
                 cout << "---------------------------------------------" << endl;
-                exp->mostrarAutomato(alfabeto);
+                exp->mostrarAutomato(alfabeto, palavra);
                 break;
             case 3:
                 cout << endl << "---------------------------------------------" << endl;
@@ -45,6 +45,7 @@ int main(){
                 cout << " INFORME PALAVRA: ";
                 cin >> palavra;
                 exp->funcaoTransicaoEstendida(palavra);
+                break;
             case 0:
                 cout << "PROGRAMA ENCERRADO COM SUCESSO!" << endl;
                 break;
