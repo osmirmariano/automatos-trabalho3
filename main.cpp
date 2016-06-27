@@ -42,7 +42,10 @@ int main(){
                 cout << endl << "---------------------------------------------" << endl;
                 cout << "\t FUNÇÃO DE TRANSICAO" << endl;
                 cout << "---------------------------------------------" << endl;
-                cout << " INFORME PALAVRA: ";
+                exp->definindoTransicao(palavra, alfabeto);
+                cout << endl;
+                cout << "---------------------------------------------" << endl;
+                cout << " AGORA INFORME UMA PALAVRA: ";
                 cin >> palavra;
                 exp->funcaoTransicaoEstendida(palavra);
                 break;

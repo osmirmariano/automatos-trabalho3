@@ -150,10 +150,10 @@ class Expressao{
                     }
                 }
                 if(pertence == tam2){
-                    cout << "   A PALAVRA '" << palavra << "' PERTENCE AO ALFABETO " << endl;
+                    cout << endl << "   A PALAVRA '" << palavra << "' PERTENCE AO ALFABETO " << endl;
                 }
                 else{
-                    cout << "   A PALAVRA '" << palavra << "' NÃO PERTENCE AO ALFABETO " << endl;
+                    cout << endl << "   A PALAVRA '" << palavra << "' NÃO PERTENCE AO ALFABETO " << endl;
                 }
             }
         }
@@ -178,20 +178,7 @@ class Expressao{
                 
                 cout << "    "  << estadoDefinido[x];
             }
-
-            /*
-            for(int i = 0; i < quantidade; i++){
-                cout << "ESTADO: " << estado[i];
-                for(int y = 0; y < tam; y++){
-                    if(alfabetoTratado[y] == palavra[x]){
-                        cout << estadoDefinido[x+1];
-                    }
-                    else{
-                        cout << estadoDefinido[x];
-                    }
-                    
-                }
-            }*/
+            
         };
 
         //FUNÇÃO PARA DEFINIR A TRANSIÇÃO DO AUTOMATO --> STATUS OK
@@ -200,6 +187,7 @@ class Expressao{
             int tamanho = alfabetoTratado.length();
 
             while(conta == 0){
+                cout << " Antes de seguir defina as transições do automato" << endl;
                 cout << "---------------------------------------------" << endl;
                 cout << "\tDEFININDO AS TRANSIÇÕES DO AUTOMATO" << endl;
                 cout << "---------------------------------------------" << endl;
@@ -209,8 +197,6 @@ class Expressao{
                         cin >> estadoDefinido[contador];
                         simbolo = alfabetoTratado[y];
                         contador++;
-
-
                     }  
                 }
                 //Tratamento de Informar número que não pertence
@@ -237,7 +223,7 @@ class Expressao{
           
 
         //FUNÇÃO PARA PEGAR O ÚLTIMO SÍMBOLO --> STATUS OK não vai precisar
-        void ultimoSimbolo(string palavra){
+        /*void ultimoSimbolo(string palavra){
             string diviPalavra;
             int tam = palavra.length();
             for(int x = tam-1; x >= 0; x--){
@@ -251,25 +237,19 @@ class Expressao{
                 
             }
             cout << endl;
-        };
+        };*/
 
         
 
         //FUNÇÃO PARA CALCULAR A FUNÇÃO DE TRANSIÇÃO ESTENDIDA --> STATUS EM ANDAMENTO
         void funcaoTransicaoEstendida(string palavra){
-            string novoEstado = "q0", diviPalavra;
+            string novoEstado = "q0";
             int tam = 0, tam1;
-            verificaPertenceAlfa(alfabeto, palavra);
-            cout << endl << "---------------------------------------------" << endl;
-            definindoTransicao(palavra, alfabeto);
-            cout << endl;
-            ultimoSimbolo(palavra);
-            cout << endl; 
+            verificaPertenceAlfa(alfabeto, palavra); 
             cout << endl << "---------------------------------------------" << endl;
                         
             tam1 = alfabetoTratado.length();
             tam = palavra.length();
-            int b = 0;
 
             for(int x = 0; x < tam; x++){
                 for(int y = 0; y < quantidade; y++){
@@ -277,106 +257,35 @@ class Expressao{
                         if(estado[y] == novoEstado){
                             if(palavra[x] == alfabetoTratado[i]){
                                 novoEstado = estadoDefinido[x];
-                                cout << " " << x << "ESTADO:" << novoEstado << endl;
+                                cout << "ESTADO: " << novoEstado << endl;
+                                cout << "ESTADO DEF: " << estadoDefinido[x] << endl;
                             }
                         }
 
                     }
 
                 }
-
             }
-            /*
-            for(int x = 0; x < tam; x++){
-                for(int y = 0; y < quantidade; y++){
-                    if(estado[y] == novoEstado){
-                        if(palavra[x] == alfabetoTratado[b]){
-                            novoEstado = estadoDefinido[x];
-                            cout << " " << x << "ESTADO:" << novoEstado << endl;
-                        }
-                        else{
-                            if(palavra[x] == alfabetoTratado[b+1]){
-                                novoEstado = estadoDefinido[x];
-                                cout << " " << x << "ESTADO:" << novoEstado << endl;
-                            }
-                        }
-                    }
-                    else{
-                        if(estado[y] == novoEstado){
-                            if(palavra[x] == alfabetoTratado[b]){
-                                novoEstado = estadoDefinido[x];
-                                cout << " " << x << "ESTADO:" << novoEstado << endl;
-                            }
-                            else{
-                                if(palavra[x] == alfabetoTratado[b+1]){
-                                    novoEstado = estadoDefinido[x];
-                                    cout << " " << x << "ESTADO:" << novoEstado << endl;
-                                }
-                            }
-                        }
-                        else{
-                            if(estado[y] == novoEstado){
-                                if(palavra[x] == alfabetoTratado[b]){
-                                    novoEstado = estadoDefinido[x];
-                                    cout << " " << x << "ESTADO:" << novoEstado << endl;
-                                }
-                                else{
-                                    if(palavra[x] == alfabetoTratado[b+1]){
-                                        novoEstado = estadoDefinido[x];
-                                        cout << " " << x << "ESTADO:" << novoEstado << endl;
-                                    } 
-                                }
-                            }
-                            else{
-                                if(estado[y] == novoEstado){
-                                    if(palavra[x] == alfabetoTratado[b]){
-                                        novoEstado = estadoDefinido[x];
-                                        cout << " " << x << "ESTADO:" << novoEstado << endl;
-                                    }
-                                    else{
-                                        if(palavra[x] == alfabetoTratado[b+1]){
-                                            novoEstado = estadoDefinido[x];
-                                            cout << " " << x << "ESTADO:" << novoEstado << endl;
-                                        } 
-                                    }
-                                }
-                                else{
-                                    if(estado[y] == novoEstado){
-                                        if(palavra[x] == alfabetoTratado[b]){
-                                            novoEstado = estadoDefinido[x];
-                                            cout << " " << x << "ESTADO:" << novoEstado << endl;
-                                        }
-                                        else{
-                                            if(palavra[x] == alfabetoTratado[b+1]){
-                                                novoEstado = estadoDefinido[x];
-                                                cout << " " << x << "ESTADO:" << novoEstado << endl;
-                                            } 
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }*/
+            
             cout << "ESTADO RETORNADO: " << novoEstado << endl;
-            /*
-            if(recebe1 > recebe2){
-                cout << " PALAVRA PERTENCE AO ALFABETO" << endl;
-                cout << endl << " ESTADO RETORNADO: " << estado << endl;
-                if (estado == "q4" || estado == "q5" || estado == "q6" || estado == "q7"){
-                    cout << "---------------------------------------------" << endl;
-                    cout << " PALAVRA ACEITA PELA O AUTÔMATO!" << endl;
-                    cout << " \tESTADO " << estado << " É FINAL" << endl;
-                    cout << "---------------------------------------------" << endl;
+            int tratar = 0;
+            for(int x = 0; x < quant; x++){
+                if(novoEstado == estadoFinal[x]){
+                    tratar = 1;
                 }
-                else{
-                    cout << "---------------------------------------------" << endl;
-                    cout << " PALAVRA NÃO É ACEITA PELO O AUTÔMATO!" << endl;
-                    cout << "\tESTADO " << estado << " NÃO É FINAL" << endl;
-                    cout << "---------------------------------------------" << endl;
-                }
-            }*/
+            }
+            if(tratar == 1){
+                cout << "---------------------------------------------" << endl;
+                cout << " PALAVRA ACEITA PELA O AUTÔMATO!" << endl;
+                cout << " \tESTADO " << novoEstado << " É FINAL" << endl;
+                cout << "---------------------------------------------" << endl;
+            }
+            else{
+                cout << "---------------------------------------------" << endl;
+                cout << " PALAVRA NÃO É ACEITA PELO O AUTÔMATO!" << endl;
+                cout << "\tESTADO " << novoEstado << " NÃO É FINAL" << endl;
+                cout << "---------------------------------------------" << endl;
+            }
         };
 
         /*int retornaLinha(string novoEstado){
