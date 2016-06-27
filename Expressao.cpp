@@ -232,36 +232,9 @@ class Expressao{
             }
         };
 
-        /*int retornaLinha(string novoEstado){
-            for(int x = 0; x < quantidade; x++){
-                if(strcmp(novoEstado == estado[x]) == 0)
-                    return x;
-            }
-            return -1;
-        }*/
+        
 
-        /*
-        int retornaColuna(string simbolo, string palavra){
-            for(int x = 0; x < quantidade; x++){
-                if(strcmp(simbolo[x] == palavra[x]) == 0)
-                    return x;
-            }
-            return -1;
-        }
-
-        string funcaoTransicao(string estd, string simb){
-            int linha = retornaLinha(estd);
-            int coluna = retornaColuna(simb);
-            if(linha == -1 || coluna == -1)
-                return "Erro";
-            return retornaEstado(tabela[linha][coluna]);
-        }
-
-        string retornaEstado(int x){
-            if(x > 0)
-                return estado;
-            return "Erro";
-        }*/  
+          
 
         //FUNÇÃO PARA PEGAR O ÚLTIMO SÍMBOLO --> STATUS OK não vai precisar
         void ultimoSimbolo(string palavra){
@@ -280,6 +253,8 @@ class Expressao{
             cout << endl;
         };
 
+        
+
         //FUNÇÃO PARA CALCULAR A FUNÇÃO DE TRANSIÇÃO ESTENDIDA --> STATUS EM ANDAMENTO
         void funcaoTransicaoEstendida(string palavra){
             string novoEstado = "q0", diviPalavra;
@@ -296,22 +271,24 @@ class Expressao{
             tam = palavra.length();
             int b = 0;
 
-            for(int x = 0; x <= tam; x++){
-                for(int y = 0; y < quantidade; y++)
-
-                if(estado[y] == novoEstado){
-                    if(palavra[x] == alfabetoTratado[b]){
-                        novoEstado = estadoDefinido[x];
-                        cout << " " << x << "ESTADO:" << novoEstado << endl;
-                    }
-                    else{
-                        if(palavra[x] == alfabetoTratado[b+1]){
-                            novoEstado = estadoDefinido[x];
-                            cout << " " << x << "ESTADO:" << novoEstado << endl;
+            for(int x = 0; x < tam; x++){
+                for(int y = 0; y < quantidade; y++){
+                    for(int i = 0; i < tam1; i++){
+                        if(estado[y] == novoEstado){
+                            if(palavra[x] == alfabetoTratado[i]){
+                                novoEstado = estadoDefinido[x];
+                                cout << " " << x << "ESTADO:" << novoEstado << endl;
+                            }
                         }
+
                     }
+
                 }
-                else{
+
+            }
+            /*
+            for(int x = 0; x < tam; x++){
+                for(int y = 0; y < quantidade; y++){
                     if(estado[y] == novoEstado){
                         if(palavra[x] == alfabetoTratado[b]){
                             novoEstado = estadoDefinido[x];
@@ -334,7 +311,7 @@ class Expressao{
                                 if(palavra[x] == alfabetoTratado[b+1]){
                                     novoEstado = estadoDefinido[x];
                                     cout << " " << x << "ESTADO:" << novoEstado << endl;
-                                } 
+                                }
                             }
                         }
                         else{
@@ -363,106 +340,16 @@ class Expressao{
                                         } 
                                     }
                                 }
-                            }
-                        }
-                    }
-                }
-            }
-            cout << "ESTADO RETORNADO: " << novoEstado << endl;
-            // int recebe1 = 0, recebe2 = 0;
-            // string q0, q1, q2, q3, q4, q5, q6, q7, estado="q0";
-
-            
-            /*ultimoSimbolo(palavra);
-            for(int x = 0; x < tam; x++){*/
-                //if(estado[x] == palavra[x])
-                /*for(int y = x+1; y < tam; y++){
-                    if(alfabetoTratado[x] == palavra[y]){
-                        recebe1++;
-                        cout << "RECEBE 1: " << recebe1 << endl;
-                    }
-                    else{
-                        recebe2++;
-                        cout << "RECEBE 2: " << recebe2 << endl;
-                    }
-                }*/
-
-                /*if(palavra[x] != 'a' && palavra[x] != 'b'){
-                    pertence = 1;
-                }
-                else{
-                    if(estado == "q0"){
-                        if(palavra[x] == 'a'){
-                            estado = "q1";
-                        }
-                        else{
-                            if(palavra[x] == 'b')
-                                estado == "q0";
-                        }
-                    }
-                    else{
-                        if(estado == "q1"){
-                            if(palavra[x] == 'a'){
-                                estado = "q2";
-                            }
-                            else if(palavra[x] == 'b'){
-                                estado = "q3";
-                            }
-                        }
-                        else{
-                            if(estado == "q2"){
-                                if(palavra[x] == 'a'){
-                                    estado = "q4";
-                                }
-                                else if(palavra[x] == 'b'){
-                                    estado = "q5";
-                                }
-                            }
-                            else{
-                                if (estado == "q3"){
-                                    if(palavra[x] == 'a'){
-                                        estado = "q6";
-                                    }
-                                    else if(palavra[x] == 'b'){
-                                        estado = "q7";
-                                    }
-                                }
                                 else{
-                                    if (estado == "q4"){
-                                        if(palavra[x] == 'a'){
-                                            estado = "q4";
-                                        }
-                                        else if(palavra[x] == 'b'){
-                                            estado = "q5";
-                                        }
-                                    }
-                                    else{
-                                        if (estado == "q5"){
-                                            if(palavra[x] == 'a'){
-                                                estado = "q6";
-                                            }
-                                            else if(palavra[x] == 'b'){
-                                                estado = "q7";
-                                            }
+                                    if(estado[y] == novoEstado){
+                                        if(palavra[x] == alfabetoTratado[b]){
+                                            novoEstado = estadoDefinido[x];
+                                            cout << " " << x << "ESTADO:" << novoEstado << endl;
                                         }
                                         else{
-                                            if (estado == "q6"){
-                                                if(palavra[x] == 'a'){
-                                                    estado = "q2";
-                                                }
-                                                else if(palavra[x] == 'b'){
-                                                    estado = "q3";
-                                                }
-                                            }
-                                            else{
-                                                if (estado == "q7"){
-                                                    if(palavra[x] == 'a'){
-                                                        estado = "q1";
-                                                    }
-                                                    else if(palavra[x] == 'b'){
-                                                        estado = "q0";
-                                                    }
-                                                }
+                                            if(palavra[x] == alfabetoTratado[b+1]){
+                                                novoEstado = estadoDefinido[x];
+                                                cout << " " << x << "ESTADO:" << novoEstado << endl;
                                             } 
                                         }
                                     }
@@ -471,8 +358,9 @@ class Expressao{
                         }
                     }
                 }
-            }
-            
+            }*/
+            cout << "ESTADO RETORNADO: " << novoEstado << endl;
+            /*
             if(recebe1 > recebe2){
                 cout << " PALAVRA PERTENCE AO ALFABETO" << endl;
                 cout << endl << " ESTADO RETORNADO: " << estado << endl;
@@ -490,5 +378,38 @@ class Expressao{
                 }
             }*/
         };
+
+        /*int retornaLinha(string novoEstado){
+            for(int x = 0; x < quantidade; x++){
+                if(novoEstado == estado[x])
+                    return x;
+            }
+            return -1;
+        };
+
+
+        int retornaColuna(string palavra){
+            for(int x = 0; x < quantidade; x++){
+                if(palavra[x] == alfabetoTratado[x])
+                    return x;
+            }
+            return -1;
+        };
+
+        string funcaoTransicao(string novoEstado, string palavra){
+            int tam1 = alfabetoTratado.length();
+            string tabela[quantidade][tam1];
+            int linha = retornaLinha(novoEstado);
+            int coluna = retornaColuna(palavra);
+            if(linha == -1 || coluna == -1)
+                return "Erro";
+            return retornaEstado(tabela[linha][coluna]);
+        };
+
+        string retornaEstado(int x){
+            if(x > 0)
+                return estado;
+            return "Erro";
+        };*/
         
 };
