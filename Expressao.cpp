@@ -15,7 +15,7 @@ class Expressao{
 
 
         int quantidade, quant;
-        string estado[20], estadoFinal[10], simbolo, estadoDefinido[30][30];
+        string estado[20], estadoFinal[10], simbolo, estadoDefinido[50][50];
         int pertence;
     public:
 
@@ -92,6 +92,7 @@ class Expressao{
                     }
                     if(verificar < quant){
                         cout << endl << "\t ALGUNS DOS ESTADOS NÃO EXISTEM NO AUTOMATO" << endl;  
+                        verificar = 0;
                     }
                 }
                 cout << "---------------------------------------------" << endl;
@@ -270,21 +271,58 @@ class Expressao{
         //FUNÇÃO PARA CALCULAR A FUNÇÃO DE TRANSIÇÃO ESTENDIDA --> STATUS EM ANDAMENTO
         void funcaoTransicaoEstendida(string palavra){
             string novoEstado = "q0";
-            int tam = 0, tam1 = 0;
+            int tam = 0, tam1 = 0, k = 0;
             verificaPertenceAlfa(alfabeto, palavra); 
             cout << endl << "---------------------------------------------" << endl;
                         
             tam1 = alfabetoTratado.length();
             tam = palavra.length();
+            
+            /*for(int y = 0; y < quantidade; y++){
+                estado[y] = novoEstado;
+                for(int z = 0; z < tam1; z++){
+                    if(k < tam){
+                        if(palavra[k] == alfabetoTratado[z]){
+                            novoEstado = estadoDefinido[y][z];
+                            cout << "Estado atual: " << estado[y] << " entra: " << palavra[y] << " vai para: " << estadoDefinido[y][z] << endl << endl;
+                            cout << " Palavra: " << palavra[y] << " Alfabeto: " << alfabetoTratado[z] << " novoEstado: " << novoEstado << endl; 
+                        }
+                    }
+                }
+                k++;
+            }*/
+            int x = 0;
+            for(int y = 0; y < quantidade; y++){
+                x++;
+                for(int z = 0; z < tam1; z++){
+                    if(k < tam){
+                        if(palavra[k] == alfabetoTratado[z]){
+                            novoEstado = estadoDefinido[y][z];
+                            // cout << "Estado atual: " << estado[y] << " entra: " << palavra[y] << " vai para: " << estadoDefinido[y][z] << endl << endl;
+                            // cout << " Palavra: " << palavra[y] << " Alfabeto: " << alfabetoTratado[z] << " novoEstado: " << novoEstado << endl; 
+                            while(estado[y] != novoEstado){
+                                x++;
+                                y = x;
+                            }
+                        }
+                    }
+                }
+                k++;
+            }
 
-            for(int y = 0; y < tam; y++){
+            /*for(int y = 0; y < tam; y++){
                 for(int z = 0; z < tam1; z++){
                     if(palavra[y] == alfabetoTratado[z]){
                         novoEstado = estadoDefinido[y][z];
+                        cout << "Y: " << y << " Z: " << z << endl;
+                        cout << estadoDefinido[y][z] << endl;
+                        cout << " Palavra: " << palavra[y] << " Alfabeto: " << alfabetoTratado[z] << " novoEstado: " << novoEstado << endl;
+
                     }
+                    cont++;
+                    cout << "CONTADOR: " << cont << endl;
                 }
-            }
-            
+            }*/
             cout << "ESTADO RETORNADO: " << novoEstado << endl;
             int tratar = 0;
             for(int x = 0; x < quant; x++){
