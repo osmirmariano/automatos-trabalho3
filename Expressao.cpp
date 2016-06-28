@@ -152,7 +152,7 @@ class Expressao{
             //unirAlfabeto(alfabeto);
             int tam =  alfabetoTratado.length();
             for(int x = 0; x < tam; x++){
-                cout << "        |      ";
+                cout << "        |   ";
                 cout << alfabetoTratado[x];
             }
             cout << endl << "---------------------------------------------" << endl;
@@ -160,8 +160,10 @@ class Expressao{
                 cout << endl;
                 cout << "    " << estado[x]  << "  | ";
                 for(int y = 0; y < tam; y++){
-                    cout << "      " << estadoDefinido[x][y];
+                    cout << "  " << estadoDefinido[x][y];
+                    cout << "    |  ";
                 }
+                cout << endl << "---------------------------------------------" << endl;
             }
 
            /* cout << endl;
@@ -239,12 +241,12 @@ class Expressao{
                     }  
                 }
                 
-                /*//Tratamento de Informar número que não pertence
-                for(int x = 0; x < tamanho; x++){
+                //Tratamento de Informar número que não pertence
+                /*for(int x = 0; x < tamanho; x++){
                     cout << " ENTROU AQUI" << endl;
                     for(int y = 0; y < quantidade; y++){
                         cout << " ENTROU AQUI 2" << endl;
-                        if(estadoDefinido[x][y] == estado[y]){
+                        if(estado[y] == estadoDefinido[x][y]){
                             cout << " ENTROU AQUI 3" << endl;
                             conta++;
                             break;
@@ -253,7 +255,7 @@ class Expressao{
                 }
                 cout << " CONTADOR: " << contador << endl;
                 cout << " CONTA: " << conta << endl;
-                if(conta < contador){
+                if(conta != 0){
                     cout << endl << " EXISTEM ESTADOS INFORMADOS QUE NÃO PERTECE AO AUTOMATO" << endl;
                     cout << "---------------------------------------------" << endl;
                     conta = 0;
