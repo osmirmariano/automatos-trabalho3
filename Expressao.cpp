@@ -228,7 +228,8 @@ class Expressao{
 
         //FUNÇÃO PARA CALCULAR A FUNÇÃO DE TRANSIÇÃO ESTENDIDA --> STATUS EM ANDAMENTO
         void funcaoTransicaoEstendida(string palavra){
-            string estadoAtual = "q0";
+            //string estadoAtual = "q0";
+            string estadoAtual = estado[0];
             int tam = 0, tam1 = 0, k = 0, x = 0, flag = 0;
             verificaPertenceAlfa(alfabeto, palavra);
             cout << endl << "---------------------------------------------" << endl;
