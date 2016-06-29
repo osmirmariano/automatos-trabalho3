@@ -278,35 +278,68 @@ class Expressao{
             tam1 = alfabetoTratado.length();
             tam = palavra.length();
             
-            /*for(int y = 0; y < quantidade; y++){
-                estado[y] = novoEstado;
-                for(int z = 0; z < tam1; z++){
-                    if(k < tam){
-                        if(palavra[k] == alfabetoTratado[z]){
-                            novoEstado = estadoDefinido[y][z];
-                            cout << "Estado atual: " << estado[y] << " entra: " << palavra[y] << " vai para: " << estadoDefinido[y][z] << endl << endl;
-                            cout << " Palavra: " << palavra[y] << " Alfabeto: " << alfabetoTratado[z] << " novoEstado: " << novoEstado << endl; 
-                        }
-                    }
-                }
-                k++;
-            }*/
-            int x = 0;
+            // for(int y = 0; y < quantidade; y++){
+            //     for(int z = 0; z < tam1; z++){
+            //         if(k < tam){
+            //             if(palavra[k] == alfabetoTratado[z]){
+            //                 novoEstado = estadoDefinido[y][z];
+            //                 cout << "Estado atual: " << estado[y] << " entra: " << palavra[y] << " vai para: " << estadoDefinido[y][z] << endl << endl;
+            //                 cout << " Palavra: " << palavra[y] << " Alfabeto: " << alfabetoTratado[z] << " novoEstado: " << novoEstado << endl; 
+            //             }
+            //         }
+            //     }
+            //     k++;
+            // }
+            
+            int a = 0, b = 0, x = 0, y = 0, i = 0, j = 0;
+
+            // while(x < quantidade){
+            //     estado[x] = novoEstado;
+            //     while(y < tam1){
+            //         if(palavra[k] == alfabetoTratado[y]){
+            //             novoEstado =  estadoDefinido[x][y];
+            //             cout << "X: " << x << endl;
+            //             cout << "Y: " << y << endl;
+            //             cout << "K: " << k << endl;
+            //             cout << "Estado atual: " << estado[x] << " entra: " << palavra[k] << " vai para: " << estadoDefinido[x][y] << endl;
+            //             cout << " Palavra: " << palavra[k] << " Alfabeto: " << alfabetoTratado[y] << " novoEstado: " << novoEstado << endl << endl; 
+                                
+            //             a = x;
+            //             b = y;
+            //         }
+            //         y++;
+            //     }
+            //     x++;
+            //     k++;
+            // }
+
             for(int y = 0; y < quantidade; y++){
-                x++;
+                estado[y] = novoEstado; // Aqui o estado vai recebe o informado de acordo com a palavra
                 for(int z = 0; z < tam1; z++){
                     if(k < tam){
                         if(palavra[k] == alfabetoTratado[z]){
                             novoEstado = estadoDefinido[y][z];
-                            // cout << "Estado atual: " << estado[y] << " entra: " << palavra[y] << " vai para: " << estadoDefinido[y][z] << endl << endl;
-                            // cout << " Palavra: " << palavra[y] << " Alfabeto: " << alfabetoTratado[z] << " novoEstado: " << novoEstado << endl; 
-                            while(estado[y] != novoEstado){
-                                x++;
-                                y = x;
-                            }
+                            a = y; 
+                            b = z;
+                            cout << "Y: " << y << endl;
+                            cout << "Z: " << z << endl;
+                            cout << "K: " << k << endl;
+                            cout << "Estado atual: " << estado[y] << " entra: " << palavra[y] << " vai para: " << estadoDefinido[y][z] << endl;
+                            cout << " Palavra: " << palavra[y] << " Alfabeto: " << alfabetoTratado[z] << " novoEstado: " << novoEstado << endl << endl; 
                         }
+                        else{
+                            i = 1;
+                            j = 1;
+                        }
+                        
                     }
+                    if(i == 0)
+                        z = b;
+                    i = 0;
                 }
+                if(j == 0)
+                    y = a;
+                j = 0;
                 k++;
             }
 
