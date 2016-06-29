@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Alfabeto{
+class Alfabeto{}
 	public:
 		int cont, flag, recebe, contando;
 		vector<string> alfabetos;
